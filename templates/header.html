@@ -1,0 +1,23 @@
+<div class="header">
+  <div>
+    <h1 class="logo">Pinterest Clone</h1>
+  </div>
+  <div>
+
+    {% if not user.is_authenticated %}
+      <a href="{% url 'accountapp:login' %}?next={{request.path}}">
+        <span>login</span>
+      </a>
+      <a href="{% url 'accountapp:create' %}">
+        <span>signup</span>
+      </a>
+    {% else %}
+      <a href="{% url 'accountapp:detail' pk=user.pk %}">
+        <span>MyPage</span>
+      </a> 
+      <a href="{% url 'accountapp:logout' %}?next={{request.path}}">
+        <span>logout</span>
+      </a> 
+    {% endif %}
+  </div>
+</div>
