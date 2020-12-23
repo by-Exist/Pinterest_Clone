@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # Local Apps
     "accountapp",
     "profileapp",
+    "articleapp",
 ]
 
 MIDDLEWARE = [

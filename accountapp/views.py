@@ -3,7 +3,12 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    UpdateView,
+)
 from .decorators import account_ownership_required
 from .forms import AccountUpdateForm
 
