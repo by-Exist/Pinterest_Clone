@@ -5,12 +5,33 @@
 
 <div>
   <div style="text-align: center; max-width: 500px; margin: 4rem auto;">
-    <p>
-      {{ target_user.date_joined }}
-    </p>
-    <h2 style='font-family: "NanumSquareRoundOTFB";'>
-      {{ target_user.username }}
-    </h2>
+
+    <!-- 프로필이 있다면 -->
+    {% if target_user.profile %}
+      <img src="{{ target_user.profile.image.url }}" alt="" style='height: 10rem; width: 10rem; border-radius: 10rem; margin-bottom: 1.5rem;'>
+      <h2 style='font-family: "NanumSquareRoundOTFB";'>
+        {{ target_user.profile.nickname }}
+        {% if target_user == user %}
+          <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}" style="font-size: 1.3rem;">
+            edit
+          </a>
+        {% endif %}
+      </h2>
+      <h5 style='margin-bottom: 3rem;'>
+        {{ target_user.profile.message }}
+      </h5>
+    <!-- 프로필이 없다면 -->
+    {% else %}
+      {% if target_user == user %}
+        <a href="{% url 'profileapp:create' %}">
+          <h2 style="font-family: NanumSquareRoundOTFB;">
+            Create Profile
+          </h2>
+        </a>
+      {% else %}
+        개인 설정을 마치지 않은 유저입니다.
+      {% endif %}
+    {% endif %}
     
     {% if target_user == user %}
       <a href="{% url 'accountapp:update' pk=user.pk %}">
@@ -20,7 +41,7 @@
         <p>Quit</p>
       </a>
     {% endif %}
-      
+
   </div>
 </div>
 

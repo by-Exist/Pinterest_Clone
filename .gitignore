@@ -153,3 +153,6 @@ dmypy.json
 
 # vscode
 .vscode/
+
+_static/
+_media/
