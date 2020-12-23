@@ -25,6 +25,15 @@
         Delete
       </a>
     {% endif %}
+
+    <hr>
+    
+    <!-- 댓글 -->
+    {% for comment in target_article.comment_set.all %}
+      {% include 'commentapp/detail.html' with comment=comment %}
+    {% endfor %}
+
+    {% include 'commentapp/create.html' with article=target_article %}
       
   </div>
 </div>
