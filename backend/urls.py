@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
+from articleapp.views import ArticleListView
 
 
 urlpatterns = [
@@ -27,6 +28,7 @@ urlpatterns = [
     path("comments/", include("commentapp.urls")),
     path("projects/", include("projectapp.urls")),
     path("subscriptions/", include("subscriptionapp.urls")),
+    path("", ArticleListView.as_view(), name="main"),
 ]
 
 if settings.DEBUG == True:

@@ -44,7 +44,7 @@ class AccountUpdateView(UpdateView):
     model = get_user_model()
     context_object_name = "target_user"
     form_class = AccountUpdateForm
-    success_url = reverse_lazy("accountapp:hello_world")
+    success_url = reverse_lazy("main")
     template_name = "accountapp/update.html"
 
 

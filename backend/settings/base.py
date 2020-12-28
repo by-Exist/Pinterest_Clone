@@ -117,4 +117,4 @@ USE_TZ = True
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 
-LOGIN_REDIRECT_URL = reverse_lazy("accountapp:home")
+LOGIN_REDIRECT_URL = reverse_lazy("main")
