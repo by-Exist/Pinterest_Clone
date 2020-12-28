@@ -23,8 +23,11 @@ DATABASES = {
 
 ALLOWED_HOSTS = []
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
+# collectstatic을 수집할 때 사용될 path
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# static file을 조회할 때 추가적으로 사용될 path 등록
 STATICFILES_DIRS = [BASE_DIR / "_static"]
+
+# 사용자의 업로드 파일을 보관할 path
 MEDIA_ROOT = BASE_DIR / "_media"

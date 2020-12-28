@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+  <style>
+
+    .container {
+      padding: 0;
+      margin: 0, auth;
+    }
+
+    .container div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 1rem;
+    }
+
+    .container img {
+      width: 7rem;
+      height: 7rem;
+      border-radius: 1rem;
+      object-fit: cover;
+    }
+  </style>
+
+  {% if project_list %}
+    <div class="container">
+      {% for project in project_list %}
+        <!-- Project -->
+        <a href="{% url 'projectapp:detail' pk=project.pk %}">
+          <div style='display: block;'>
+            <img src="{{ project.image.url }}" alt="">
+            <h5 class="mt-2" style='font-family: NanumSquareRoundOTFEB;'>{{ project.title | truncatechars:6 }}</h5>
+          </div>
+        </a>
+      {% endfor %}
+    </div>    
+    <script src="{% static 'js/magicgrid.js' %}"></script>
+  {% else %}
+    <div class="text-center">
+      <h1>작성된 프로젝트가 없습니다.</h1>
+    </div>
+  {% endif %}
+
+  {% include 'snippets/pagenation.html' with page_obj=page_obj %}
+
+  <div style='text-align: center;'>
+    <a href="{% url 'projectapp:create' %}" class='btn btn-dark rounded-pill col-3 mt-3 mb-3'>Create</a>
+  </div>
+
+
+{% endblock content %}

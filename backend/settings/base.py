@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "profileapp",
     "articleapp",
     "commentapp",
+    "projectapp",
 ]
 
 MIDDLEWARE = [
@@ -66,7 +67,9 @@ ROOT_URLCONF = "backend.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        # project 전체에서 사용될 템플릿 경로를 설정
+        "DIRS": [BASE_DIR / "backend" / "templates"],
+        # app/templates/app/~.html 경로의 추적을 허용하는지의 여부
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -109,8 +112,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
+# 파일을 참조할 때 사용될 임시 url
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 

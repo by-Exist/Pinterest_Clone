@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block content %}
 
-<div>
+<divdi>
   <div style="text-align: center; max-width: 500px; margin: 4rem auto;">
 
     <!-- 프로필이 있다면 -->
     {% if target_user.profile %}
-      <img src="{{ target_user.profile.image.url }}" alt="" style='height: 10rem; width: 10rem; border-radius: 10rem; margin-bottom: 1.5rem;'>
+      <img src="{{ target_user.profile.image.url }}" alt="" style='height: 10rem; width: 10rem; border-radius: 10rem; margin-bottom: 1.5rem; object-fit: cover;'>
       <h2 style='font-family: "NanumSquareRoundOTFB";'>
         {{ target_user.profile.nickname }}
         {% if target_user == user %}
@@ -43,7 +44,62 @@
     {% endif %}
 
   </div>
+
+  <div>
+
+    
+  <div>
+    <style>
+
+      .container {
+        padding: 0;
+        margin: 0, auth;
+      }
+
+      .container a {
+        width: 40%;
+        max-width: 250px;
+      }
+
+      .container div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1rem;
+      }
+
+      .container img {
+        width: 100%;
+        border-radius: 1rem;
+      }
+    </style>
+
+    {% if object_list %}
+      <div class="container">
+        {% for article in object_list %}
+          <!-- Article -->
+          <a href="{% url 'articleapp:detail' pk=article.pk %}">
+            <div>
+              <img src="{{ article.image.url }}" alt="">
+            </div>
+          </a>
+        {% endfor %}
+      </div>    
+      <script src="{% static 'js/magicgrid.js' %}"></script>
+    {% else %}
+      <div class="text-center">
+        <h1>작성된 게시물이 없습니다.</h1>
+      </div>
+    {% endif %}
+
+    {% include 'snippets/pagenation.html' with page_obj=page_obj %}
+
+    <div style='text-align: center;'>
+      <a href="{% url 'articleapp:create' %}" class='btn btn-dark rounded-pill col-3 mt-3 mb-3'>Create</a>
+    </div>
+</div>
+
+  </div>
 </div>
 
 {% endblock content %}
-  

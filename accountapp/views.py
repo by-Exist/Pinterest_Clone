@@ -1,3 +1,5 @@
+from articleapp.models import Article
+from typing import Any, Dict
 from django.urls.base import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.contrib.auth import get_user_model
@@ -9,6 +11,7 @@ from django.views.generic import (
     DetailView,
     UpdateView,
 )
+from django.views.generic.list import MultipleObjectMixin
 from .decorators import account_ownership_required
 from .forms import AccountUpdateForm
 
@@ -23,10 +26,16 @@ class AccountCreateView(CreateView):
     template_name = "accountapp/create.html"
 
 
-class AccountDetailView(DetailView):
+class AccountDetailView(DetailView, MultipleObjectMixin):
     model = get_user_model()
     context_object_name = "target_user"
     template_name = "accountapp/detail.html"
+
+    pagenate_by = 25
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        object_list = Article.objects.filter(writer=self.get_object())
+        return super().get_context_data(object_list=object_list, **kwargs)
 
 
 @method_decorator(has_ownership, "get")

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from projectapp.models import Project
 
 
 # Create your models here.
@@ -9,6 +10,9 @@ class Article(models.Model):
         verbose_name="작성자",
         on_delete=models.CASCADE,
         related_name="article_set",
+    )
+    project = models.ForeignKey(
+        Project, on_delete=models.SET_NULL, related_name="article_set", null=True
     )
     title = models.CharField("제목", max_length=200, null=True)
     image = models.ImageField("이미지", upload_to="article/%Y/%m/%d", null=False)
