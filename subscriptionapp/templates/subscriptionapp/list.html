@@ -3,33 +3,9 @@
 
 
 {% block content %}
-
-<div>
-  <div style="text-align: center; max-width: 500px; margin: 4rem auto 1.5rem auto">
-    <img src="{{ target_project.image.url }}" alt='' style="height: 12rem; width: 12rem; border-radius: 20rem; margin-bottom: 2rem; object-fit: cover;">
-    <h2>{{ target_project.title }}</h2>
-    <h5>{{ target_project.description }}</h5>
-  </div>
-
-  {% if user.is_authenticated %}
-    
-    <div class="text-center mb-5">
-      {% if not subscription %}
-        <a href='{% url "subscriptionapp:subscribe" %}?project_pk={{ target_project.pk }}' class='btn btn-primary rounded-pill px-4'>
-          Subscribe
-        </a>
-      {% else %}
-        <a href='{% url "subscriptionapp:subscribe" %}?project_pk={{ target_project.pk }}' class='btn btn-dark rounded-pill px-4'>
-          Unsubscribe
-        </a>
-      {% endif %}
-    </div>
-      
-  {% endif %}
-  
   <div>
+    <div>
       <style>
-
         .container {
           padding: 0;
           margin: 0, auth;
@@ -53,9 +29,9 @@
         }
       </style>
 
-      {% if object_list %}
+      {% if article_list %}
         <div class="container">
-          {% for article in object_list %}
+          {% for article in article_list %}
             <!-- Article -->
             <a href="{% url 'articleapp:detail' pk=article.pk %}">
               <div>
@@ -76,8 +52,7 @@
       <div style='text-align: center;'>
         <a href="{% url 'articleapp:create' %}" class='btn btn-dark rounded-pill col-3 mt-3 mb-3'>Create</a>
       </div>
+    </div>
   </div>
-</div>
-
 {% endblock content %}
-  
+    
