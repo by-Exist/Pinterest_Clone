@@ -116,11 +116,12 @@ USE_TZ = True
 # 파일을 참조할 때 사용될 임시 url
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
+
 # collectstatic을 수집할 때 사용될 path
 STATIC_ROOT = BASE_DIR / "staticfiles"
-# static file을 조회할 때 추가적으로 사용될 path 등록
-STATICFILES_DIRS = [BASE_DIR / "_static"]
-# 사용자의 업로드 파일을 보관할 path
-MEDIA_ROOT = BASE_DIR / "_media"
+
+# 실제로 파일이 저장되조 참조되는 경로
+STATICFILES_DIRS = [BASE_DIR / "static"]
+MEDIA_ROOT = BASE_DIR / "media"
 
 LOGIN_REDIRECT_URL = reverse_lazy("main")
