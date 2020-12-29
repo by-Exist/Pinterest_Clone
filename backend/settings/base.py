@@ -117,4 +117,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 
+# collectstatic을 수집할 때 사용될 path
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 LOGIN_REDIRECT_URL = reverse_lazy("main")

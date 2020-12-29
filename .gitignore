@@ -158,3 +158,4 @@ _static/
 _media/
 학습 메모.txt
 Dockerfile
+nginx.conf
