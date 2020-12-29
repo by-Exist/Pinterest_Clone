@@ -154,7 +154,6 @@ dmypy.json
 # vscode
 .vscode/
 
-_static/
 _media/
 학습 메모.txt
 Dockerfile
