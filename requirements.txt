@@ -7,6 +7,7 @@ Django==3.1.4
 django-bootstrap4==2.3.1
 django-debug-toolbar==3.2
 django-environ==0.4.5
+gunicorn==20.0.4
 mypy-extensions==0.4.3
 pathspec==0.8.1
 Pillow==8.0.1
