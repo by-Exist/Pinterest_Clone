@@ -22,7 +22,7 @@ env = environ.Env(
     # DJANGO_DEBUG 환경변수가 없을 때 기본값으로 False를 사용하도록 설정
     DJANGO_DEBUG=(bool, False),
 )
-environ.Env.read_env()
+environ.Env.read_env(".env")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
