@@ -12,26 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 from django.urls.base import reverse_lazy
-import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
-# https://django-environ.readthedocs.io/en/latest/
-env = environ.Env(
-    # DJANGO_DEBUG 환경변수가 없을 때 기본값으로 False를 사용하도록 설정
-    DJANGO_DEBUG=(bool, False),
-)
-environ.Env.read_env(".env")
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DJANGO_DEBUG")
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 # Application definition
 INSTALLED_APPS = [
@@ -125,3 +108,5 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_ROOT = BASE_DIR / "media"
 
 LOGIN_REDIRECT_URL = reverse_lazy("main")
+
+ALLOWED_HOSTS = ["*"]
