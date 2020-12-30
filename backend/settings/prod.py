@@ -1,3 +1,4 @@
+from backend.settings.dev import SECRET_KEY
 from .base import *
 
 def read_secret(secret_name):
