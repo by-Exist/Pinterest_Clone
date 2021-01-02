@@ -27,7 +27,7 @@
 
 - 유투브 '**작정하고 장고**' 강의를 참고하여 Pinterest 사이트를 클론 해본다.
   - [작정하고 장고](https://www.youtube.com/watch?v=RWEZITw27Ts&list=PLQFurmxCuZ2RVfilzQB5rCGWuODBf4Qjo) (유료화 선언으로 링크가 제거될 수 있음)
-- [클론 사이트 (닫힘)](http://158.247.213.52/)
+- [클론 사이트 (간헐적으로 열릴 예정)](http://158.247.213.52/)
 
 ---
 
