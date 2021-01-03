@@ -32,10 +32,16 @@ class ArticleCreateView(CreateView):
 
 
 class ArticleDetailView(DetailView, FormMixin):
-    model = Article
+    queryset = Article.objects.all() \
+        .select_related('writer') \
+        .prefetch_related('comment_set__writer') \
+        .prefetch_related('comment_set__writer__profile')
     template_name = "articleapp/detail.html"
     form_class = CommentCreationForm
     context_object_name = "target_article"
+
+    # def get_queryset(self):
+    #     return Article.objects.prefetch_related("comment_set").select_related("writer__profile")
 
 
 auth_decos = [login_required, article_ownership_required]

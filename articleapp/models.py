@@ -20,3 +20,4 @@ class Article(models.Model):
     image = models.ImageField("이미지", upload_to="article/%Y/%m/%d", null=False)
     content = models.TextField("본문", null=True, blank=True)
     created_at = models.DateTimeField("작성 날짜", auto_now_add=True)
+    
